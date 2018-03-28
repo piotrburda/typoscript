@@ -1,0 +1,94 @@
+#main menu
+lib.main_menu = COA {
+lib.main_menu = HMENU
+lib.main_menu.special = list
+lib.main_menu.special.value = 117, 968, 3887, 986, 4607, 115, 113, 141, 1156, 9863
+lib.main_menu.excludeUidList = 2852, 2853, 4651, 4619, 5003, 3651, 5108, 5107, 5109
+lib.main_menu {
+  1 = TMENU
+  1.noBlur = 1
+  1 {
+    wrap = <ul class="nav navbar-nav navbar-main"><li class="active menu-item menupos-3"><a title="URLOP FREESKI" href="http://www.urlop.narty.pl/">URLOP FREESKI</a></li>|</ul>
+    expAll = 1
+		NO {
+			ATagTitle.field = title
+			wrapItemAndSub =<li class="active menu-item menupos-{register:count_MENUOBJ}">|</li>
+			wrapItemAndSub.insertData = 1
+			stdWrap.htmlSpecialChars = 1
+			accessKey = 1
+		}
+
+		IFSUB < .NO
+		IFSUB = 1
+		IFSUB {
+			wrapItemAndSub = <li class="menu-item menupos-{register:count_MENUOBJ} dropdown">|</li>
+			wrapItemAndSub.insertData = 1
+			linkWrap= |<b class="btn-xs glyphicon glyphicon-chevron-down"></b>
+			ATagParams = class="dropdown-toggle" data-toggle="dropdown"
+			ATagBeforeWrap = 1
+			stdWrap.htmlSpecialChars = 1
+		}
+
+		ACTIFSUB < .NO  
+
+		ACTIFSUB {
+			wrapItemAndSub = <li class="active menu-item menupos-{register:count_MENUOBJ} dropdown"|</li>   
+			wrapItemAndSub.insertData = 1  
+		}
+
+		ACT < .NO
+
+		ACT {
+			wrapItemAndSub = <li class="active menu-item menupos-{register:count_MENUOBJ}">|</li> 
+			wrapItemAndSub.insertData = 1  
+		}
+		
+		CURIFSUB < .IFSUB
+		
+		CURIFSUB {
+			wrapItemAndSub = <li class="menu-item dropdown menupos-{register:count_MENUOBJ}">|</li>        
+			wrapItemAndSub.insertData = 1     
+		}
+  }
+  # second level
+  2 = TMENU
+  2.noBlur = 1
+  2.wrap = <ul class="dropdown-menu">|</ul>
+  2{
+    expAll = 1
+		NO {
+			ATagTitle.field = title
+			wrapItemAndSub =<li class="menu-item">|</li>
+			stdWrap.htmlSpecialChars = 1
+			accessKey = 1
+		}
+
+		IFSUB < .NO
+		IFSUB = 1
+		IFSUB {
+			wrapItemAndSub = <li class="menu-itemu">|</li>
+			linkWrap= |
+			ATagParams = 
+			ATagBeforeWrap = 1
+			stdWrap.htmlSpecialChars = 1
+		}
+
+		ACTIFSUB < .IFSUB
+		ACTIFSUB {
+			wrapItemAndSub = <li class="menu-item">|</li>
+		}
+
+		ACT < .NO
+		ACT = 1
+		ACT {
+			wrapItemAndSub = <li class="menu-item">|</li>
+		}
+		
+		CURIFSUB < .IFSUB
+		CURIFSUB = 1
+		CURIFSUB {
+			wrapItemAndSub = <li class="menu-item">|</li>
+		}
+  }
+ }
+}
